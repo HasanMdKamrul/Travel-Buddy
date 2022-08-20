@@ -3,6 +3,8 @@
 
 const card = (travelCompanion)=>{
 
+
+    console.log(travelCompanion)
     const cardSection = document.getElementById('card-section');
 
     const travelCompanionStringify = JSON.stringify(travelCompanion);
@@ -47,6 +49,8 @@ const card = (travelCompanion)=>{
 
 const bookNowHandler = (travelCompanion)=>{
     const modalBody = document.getElementById('modal-display');
+
+    console.log("clicked")
 
     const travelCompanionStringify = JSON.stringify(travelCompanion);
 
@@ -113,7 +117,6 @@ document.getElementById('btn-search').addEventListener('click',()=>{
     for (const transportMode of veichleTypes) {
         if (transportMode.veichle.toLocaleLowerCase() === input.toLocaleLowerCase()) {
             document.getElementById('card-section').innerHTML = '';
-            console.log(transportMode)
             card(transportMode);
             return;
         } else{
