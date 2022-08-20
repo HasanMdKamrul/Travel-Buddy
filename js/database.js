@@ -24,3 +24,5 @@ const Bike = {
     capacity: 2,
     description:"Enojoy the luxarious bike ride"
 }
+
+const veichleTypes = [Car,Bus,Bike];

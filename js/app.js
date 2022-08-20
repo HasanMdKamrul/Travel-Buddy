@@ -3,13 +3,15 @@
 
 const card = (travelCompanion)=>{
 
-    const mainSection = document.getElementById('main-section');
+    const cardSection = document.getElementById('card-section');
 
     const travelCompanionStringify = JSON.stringify(travelCompanion);
 
-    const sectionElement = document.createElement('section');
+    const divElement = document.createElement('div');
 
-    sectionElement.innerHTML = `
+    divElement.setAttribute('id', 'div-section')
+
+    divElement.innerHTML = `
     <div class="card mb-3 my-5">
         <div class="row g-0">
             <div class="col-md-4">
@@ -39,7 +41,7 @@ const card = (travelCompanion)=>{
         </div>
     `;
 
-    mainSection.appendChild(sectionElement);
+    cardSection.appendChild(divElement);
 
 };
 
@@ -98,7 +100,29 @@ const calculateTotalFare = (travelCompanion) => {
 }
 
 
-card(Car);
-card(Bus);
-card(Bike);
+const cardDisplayFunction = (veichleTypes)=> veichleTypes.forEach(veichle=> card(veichle))
 
+cardDisplayFunction(veichleTypes)
+
+
+// ** Search Button Functionality **
+
+document.getElementById('btn-search').addEventListener('click',()=>{
+    const input = document.getElementById('input-search').value;
+
+    for (const transportMode of veichleTypes) {
+        if (transportMode.veichle.toLocaleLowerCase() === input.toLocaleLowerCase()) {
+            document.getElementById('card-section').innerHTML = '';
+            console.log(transportMode)
+            card(transportMode);
+            return;
+        } else{
+            document.getElementById('card-section').innerHTML = `<h1 class='text-light text-center'> No data found </h1>`;
+        }
+        
+    }
+
+    
+
+    
+})
